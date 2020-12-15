@@ -33,9 +33,8 @@ def calculate_runtime(algorithms, inputSizes):
         algorithms))), index=inputSizes)
     for idxAlgorithm in range(len(algorithms)):
         for idxInputSize in range(len(inputSizes)):
-            inputArray = np.random.randint(100, size=inputSizes[idxInputSize])
             start = timeit.default_timer()
-            algorithms[idxAlgorithm](inputArray)
+            algorithms[idxAlgorithm](inputSizes[idxInputSize])
             stop = timeit.default_timer()
             runtimes.iloc[idxInputSize, idxAlgorithm] = stop-start
         runtimes.rename(
@@ -57,9 +56,9 @@ def plot_runtimes(runtimes):
 
     """
 
-    ax = runtimes.plot(kind='line', title='algorithmic_complexity', logx=True)
-    ax.set_xlabel("x label")
-    ax.set_ylabel("y label")
+    ax = runtimes.plot(kind='line', title='algorithmic_complexity', logx=False)
+    ax.set_xlabel("inputSize")
+    ax.set_ylabel("runtime")
     plt.legend(loc='upper left')
     plt.tight_layout()
     plt.show()

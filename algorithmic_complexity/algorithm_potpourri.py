@@ -4,11 +4,11 @@ This module should be imported to runtime_analysis in order to experiment and co
 """
 
 
-def double_first_element(arr):
-    """Double first element of an array.
+def double_input(n):
+    """Double input size.
 
     Parameters:
-        arr (int): Array of random integers.
+        n (int): Integer representing input size.
 
     Returns:
         None
@@ -18,15 +18,15 @@ def double_first_element(arr):
 
     """
 
-    arr[0] * 2
+    n * 2
     return
 
 
-def double_all_elements(arr):
-    """Double all elements of an array.
+def loop_to_double_input(n):
+    """Double input size in a loop over the input size.
 
     Parameters:
-        arr (int): Array of random integers.
+        n (int): Integer representing input size.
 
     Returns:
         None
@@ -36,16 +36,16 @@ def double_all_elements(arr):
 
     """
 
-    for idxArr in range(len(arr)):
-        arr[idxArr] * 2
+    for _ in range(n):
+        n * 2
     return
 
 
-def add_all_pairs(arr):
-    """Add all possible pairs of elements from array.
+def multiple_loop_to_double_input(n):
+    """Double input size in a loop over the input size multiple times.
 
     Parameters:
-        arr (int): Array of random integers.
+        n (int): Integer representing input size.
 
     Returns:
         None
@@ -55,7 +55,45 @@ def add_all_pairs(arr):
 
     """
 
-    for idxArrX in range(len(arr)):
-        for idxArrY in range(len(arr)):
-            arr[idxArrX] + arr[idxArrY]
+    for _ in range(5):
+        for _ in range(n):
+            n * 2
     return
+
+
+def nested_loop_to_double_input(n):
+    """Double input size in a nested loop over the input size.
+
+    Parameters:
+        n (int): Integer representing input size.
+
+    Returns:
+        None
+
+    Raises:
+        None
+
+    """
+
+    for _ in range(n):
+        for _ in range(n):
+            n * 2
+    return
+
+
+def fibonacci(n):
+    """Calculate fibonacci of input size recursively.
+
+    Parameters:
+        n (int): Integer representing input size.
+
+    Returns:
+        None
+
+    Raises:
+        None
+
+    """
+    if n <= 1:
+        return n
+    return fibonacci(n-1) + fibonacci(n-2)

@@ -9,12 +9,13 @@ import algorithm_potpourri as ap
 import runtime_analysis_utils as utils
 
 # set input sizes and algorithms
-inputSizes = np.array(
-    [1, 5, 10, 100, 200, 300, 400, 500, 600, 700, 800, 900, 1000])
+inputSizes = np.arange(1, 11)
 algorithms = np.array(
-    [ap.double_first_element,
-     ap.double_all_elements,
-     ap.add_all_pairs])
+    [ap.double_input,
+     ap.loop_to_double_input,
+     ap.multiple_loop_to_double_input,
+     ap.nested_loop_to_double_input,
+     ap.fibonacci])
 
 # calculate runtime for each input size/algorithm combination
 runtimes = utils.calculate_runtime(algorithms, inputSizes)
