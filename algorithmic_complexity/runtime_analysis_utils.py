@@ -5,8 +5,12 @@ This module should be imported to runtime_analysis in order to experiment and co
 
 import timeit
 
+import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
+import seaborn as sns
+
+sns.set()
 
 
 def calculate_runtime(algorithms, inputSizes):
@@ -39,7 +43,7 @@ def calculate_runtime(algorithms, inputSizes):
     return runtimes
 
 
-def plot_runtimer(runtimes):
+def plot_runtimes(runtimes):
     """Plot runtimes for a algorithm/input size combinations.
 
     Parameters:
@@ -53,4 +57,10 @@ def plot_runtimer(runtimes):
 
     """
 
-    pass
+    ax = runtimes.plot(kind='line', title='algorithmic_complexity', logx=True)
+    ax.set_xlabel("x label")
+    ax.set_ylabel("y label")
+    plt.legend(loc='upper left')
+    plt.tight_layout()
+    plt.show()
+    return

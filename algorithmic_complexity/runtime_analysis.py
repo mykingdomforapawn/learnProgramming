@@ -9,7 +9,8 @@ import algorithm_potpourri as ap
 import runtime_analysis_utils as utils
 
 # set input sizes and algorithms
-inputSizes = np.array([10, 100, 1000])
+inputSizes = np.array(
+    [1, 5, 10, 100, 200, 300, 400, 500, 600, 700, 800, 900, 1000])
 algorithms = np.array(
     [ap.double_first_element,
      ap.double_all_elements,
@@ -17,6 +18,7 @@ algorithms = np.array(
 
 # calculate runtime for each input size/algorithm combination
 runtimes = utils.calculate_runtime(algorithms, inputSizes)
+print(runtimes)
 
 # plot runtimes over input size
-print(runtimes)
+utils.plot_runtimes(runtimes)
