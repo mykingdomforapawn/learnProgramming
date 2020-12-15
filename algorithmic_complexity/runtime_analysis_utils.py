@@ -28,7 +28,6 @@ def calculate_runtime(algorithms, inputSizes):
 
     """
 
-    # initialize df to hold runtimes
     runtimes = pd.DataFrame(np.zeros((len(inputSizes), len(
         algorithms))), index=inputSizes)
     for idxAlgorithm in range(len(algorithms)):
