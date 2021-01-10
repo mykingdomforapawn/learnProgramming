@@ -36,7 +36,6 @@ class Array:
             None
 
         """
-
         return self.item_count
 
     def __getitem__(self, index):
@@ -52,7 +51,6 @@ class Array:
             IndexError: If index is not in range of array
 
         """
-
         if not 0 <= index < self.item_count:
             return IndexError('index out of range!')
         return self.primary_array[index]
@@ -70,11 +68,10 @@ class Array:
             None
 
         """
-
         return (array_capacity * ctypes.py_object)()
 
-    def _enlarge_array(self, new_capacity):
-        """ create array with input capacity and copy the contents of old to new array.
+    def _resize(self, new_capacity):
+        """ Create array with input capacity and copy the contents of old to new array.
 
         Parameters:
             new_capacity (int): Increased capacity of the array
@@ -86,11 +83,6 @@ class Array:
             None
 
         """
-
-        # TODO: change enlarge to resize, so that the array is ensmalled if too long (1/4)
-        # when you reach capacity, resize to double the size
-        # when popping an item, if size is 1/4 of capacity, resize to half
-
         secondary_array = self._make_array(new_capacity)
         for i in range(self.item_count):
             secondary_array[i] = self.primary_array[i]
@@ -129,7 +121,7 @@ class Array:
 
         """
 
-        return self.array_capacity
+        return self.item_count
 
     def capacity(self):
         """ Returns maximum number of items in an array.
@@ -185,7 +177,8 @@ class Array:
             return IndexError('index out of range!')
 
         if self.item_count == self.array_capacity:
-            self._enlarge_array(2 * self.array_capacity)
+            self._resize(2 * self.array_capacity)
+
         for i in range(self.item_count, index, -1):
             self.primary_array[i] = self.primary_array[i-1]
         self.primary_array[index] = item
@@ -244,6 +237,9 @@ class Array:
             self.primary_array[index] = self.primary_array[index + 1]
             index += 1
         self.item_count -= 1
+
+        if self.item_count == self.array_capacity // 4:
+            self._resize(self.array_capacity // 2)
 
     def pop(self):
         """ Delete the item of the array and return that item.
@@ -320,7 +316,7 @@ def main():
     print(x.list())
 
     print("Show size and capacity.")
-    print(len(x))
+    print(x.size())
     print(x.capacity())
 
     print("Check if array is empty.")
@@ -352,6 +348,21 @@ def main():
     print("Remove all instances of item 5.")
     x.remove(5)
     print(x.list())
+
+    print("Check downsizing of array.")
+    print("Array:", x.list(), ", Size:", x.size(), ", Capacity:", x.capacity())
+    x.delete_at(2)
+    print("Array:", x.list(), ", Size:", x.size(), ", Capacity:", x.capacity())
+    x.append(444)
+    print("Array:", x.list(), ", Size:", x.size(), ", Capacity:", x.capacity())
+    x.append(3)
+    print("Array:", x.list(), ", Size:", x.size(), ", Capacity:", x.capacity())
+    x.append(40)
+    print("Array:", x.list(), ", Size:", x.size(), ", Capacity:", x.capacity())
+    x.append(33)
+    print("Array:", x.list(), ", Size:", x.size(), ", Capacity:", x.capacity())
+    x.append(94)
+    print("Array:", x.list(), ", Size:", x.size(), ", Capacity:", x.capacity())
 
 
 if __name__ == "__main__":
