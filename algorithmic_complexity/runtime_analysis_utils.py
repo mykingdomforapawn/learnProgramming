@@ -25,9 +25,7 @@ def calculate_runtime(algorithms, inputSizes):
 
     Raises:
         None
-
     """
-
     runtimes = pd.DataFrame(np.zeros((len(inputSizes), len(
         algorithms))), index=inputSizes)
     for idxAlgorithm in range(len(algorithms)):
@@ -52,9 +50,7 @@ def plot_runtimes(runtimes):
 
     Raises:
         None
-
     """
-
     ax = runtimes.plot(kind='line', title='algorithmic_complexity', logx=False)
     ax.set_xlabel("inputSize")
     ax.set_ylabel("runtime")

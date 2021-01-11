@@ -15,9 +15,7 @@ def double_input(n):
 
     Raises:
         None
-
     """
-
     n * 2
     return
 
@@ -33,9 +31,7 @@ def loop_to_double_input(n):
 
     Raises:
         None
-
     """
-
     for _ in range(n):
         n * 2
     return
@@ -52,9 +48,7 @@ def multiple_loop_to_double_input(n):
 
     Raises:
         None
-
     """
-
     for _ in range(5):
         for _ in range(n):
             n * 2
@@ -72,9 +66,7 @@ def nested_loop_to_double_input(n):
 
     Raises:
         None
-
     """
-
     for _ in range(n):
         for _ in range(n):
             n * 2
@@ -92,9 +84,7 @@ def fibonacci(n):
 
     Raises:
         None
-
     """
-
     if n <= 1:
         return n
     return fibonacci(n-1) + fibonacci(n-2)
