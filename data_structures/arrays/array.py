@@ -134,7 +134,7 @@ class Array:
         """Add new item to array at specific index, increase capacity if not available.
 
         Parameters:
-            index (int): Index to to add the item at
+            index (int): Index to add the item at
             item (int): Item to add at the index
 
         Returns:
@@ -206,7 +206,7 @@ class Array:
             self._resize(self.array_capacity // 2)
 
     def pop(self):
-        """Delete the item of the array and return that item.
+        """Delete the item at the end of the array and return that item.
 
         Parameters:
             None
@@ -225,13 +225,13 @@ class Array:
         return pop_item
 
     def find(self, item):
-        """Delete all items that are the same as the input.
+        """Find the index of the first item that is equal to the input.
 
         Parameters:
-            item (int): Item that that will be deleted from the array
+            item (int): Item that that will be used for the comparison
 
         Returns:
-            None
+            index (int): Index the first item in he array that is equal to the input
 
         Raises:
             None
@@ -247,7 +247,7 @@ class Array:
         """Delete all items that are the same as the input.
 
         Parameters:
-            item (int): Item that that will be deleted from the array
+            item (int): Item that will be deleted from the array
 
         Returns:
             None
