@@ -95,7 +95,7 @@ class SingleLinkedList(object):
     """Implemetation of a single linked list. """
 
     def __init__(self):
-        """Init node object.
+        """Init single linked list object.
 
         Parameters:
             data (...): Data that is stored in this node
@@ -111,7 +111,7 @@ class SingleLinkedList(object):
         self.size = 0
 
     def __len__(self):
-        """Get length of the linked list object.
+        """Get length of the single linked list object.
 
         Parameters:
             None
@@ -133,29 +133,52 @@ class SingleLinkedList(object):
         # return count
 
     def __str__(self):
-        """Get length of the linked list object.
+        """Get string representation of the single linked list object.
 
         Parameters:
             None
 
         Returns:
-            [...] (int): Number of data nodes in the list object
+            output (str): String representation of the list object
 
         Raises:
             None
         """
-        current = self.head_
+        current_node = self.head
         output = ""
-        while current:
-            output += str(current) + " -> "
-            current = current.get_next()
+        while current_node:
+            output += str(current_node) + " -> "
+            current_node = current_node.get_next()
         return output
 
     def _increase_size(self):
-        pass
+        """Increase size attribute of single linked list object by one.
+
+        Parameters:
+            None
+
+        Returns:
+            None
+
+        Raises:
+            None
+        """
+        self.size += 1
 
     def _decrease_size(self):
-        pass
+        """Decrease size attribute of single linked list object by one.
+
+        Parameters:
+            None
+
+        Returns:
+            None
+
+        Raises:
+            None
+        """
+        if self.size > 0:
+            self.size -= 1
 
     def set_head(self, head_node):
         self.head_ = head_node
