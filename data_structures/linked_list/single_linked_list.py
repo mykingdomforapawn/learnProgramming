@@ -224,9 +224,65 @@ class SingleLinkedList(object):
         """
         self.head = node
 
-    # Pops an item from the front of the list
+    def insert_at(self, index, data):
+        """Insert a node containing the data into the list at the index.
 
-    def pop(self):
+        Parameters:
+            index (int): Index to add the node at
+            data (...): Data to add to the node
+
+        Returns:
+            None
+
+        Raises:
+            IndexError: If the index is out of range
+        """
+        if 0 > index or index > self.size:
+            return IndexError('index out of range!')
+
+        # find it
+        # dann routine
+
+        # for i in range(self.item_count, index, -1):
+        #    self.primary_array[i] = self.primary_array[i-1]
+        #self.primary_array[index] = item
+        #self.item_count += 1
+
+    def value_at(self, index):
+        # returns the value of the nth item (starting at 0 for first)
+        pass
+
+    # insert(index, value) - insert value at index, so current item at that index is pointed to by new item at index
+    # erase(index) - removes node at given index
+
+    def push(self, value):
+        # adds an item to the front of the list
+        node = Node(value)
+        node.set_next(self.head_)
+        self.set_head(node)
+
+    def append(self, value):
+        #  adds an item at the end
+        node = Node(value)
+        current = self.head_
+        if not current:
+            self.head_ = node
+            return
+
+        while current.get_next():
+            current = current.get_next()
+
+        current.set_next(node)
+
+    def pop_front(self):
+        #  remove front item and return its value
+        if self.head_:
+            self.head_ = self.head_.get_next()
+        else:
+            raise IndexError("Unable to pop from empty list")
+
+    def pop_back(self):
+        # removes end item and returns its value
         if self.head_:
             self.head_ = self.head_.get_next()
         else:
@@ -256,23 +312,9 @@ class SingleLinkedList(object):
             prev = current
             current = current.get_next()
 
-    # Pushes an item on the front of the list.
-    def push(self, value):
-        node = Node(value)
-        node.set_next(self.head_)
-        self.set_head(node)
+    # remove_value(value) - removes the first item in the list with this value
 
-    def append(self, value):
-        node = Node(value)
-        current = self.head_
-        if not current:
-            self.head_ = node
-            return
-
-        while current.get_next():
-            current = current.get_next()
-
-        current.set_next(node)
+    # reverse() - reverses the list
 
 
 def main():
