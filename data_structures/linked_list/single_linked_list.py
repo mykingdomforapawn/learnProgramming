@@ -98,8 +98,7 @@ class SingleLinkedList(object):
         """Init single linked list object.
 
         Parameters:
-            data (...): Data that is stored in this node
-            next (Node): Reference to the next node in the list
+            None
 
         Returns:
             None
@@ -180,8 +179,50 @@ class SingleLinkedList(object):
         if self.size > 0:
             self.size -= 1
 
-    def set_head(self, head_node):
-        self.head_ = head_node
+    def get_size(self):
+        """Returns number of node objects in the list.
+
+        Parameters:
+            None
+
+        Returns:
+            [...] (int): Number of items in the array
+
+        Raises:
+            None
+        """
+        return self.size
+
+    def is_empty(self):
+        """Returns True if the array is empty.
+
+        Parameters:
+            None
+
+        Returns:
+            [...] (bool): Indicator if array is empty
+
+        Raises:
+            None
+        """
+        if self.size == 0:
+            return True
+        else:
+            return False
+
+    def set_head(self, node):
+        """Set the head attribute to a node reference.
+
+        Parameters:
+            node (Node): Reference to a node object
+
+        Returns:
+            None
+
+        Raises:
+            None
+        """
+        self.head = node
 
     # Pops an item from the front of the list
 
