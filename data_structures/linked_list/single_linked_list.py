@@ -106,8 +106,8 @@ class SingleLinkedList(object):
         Raises:
             None
         """
-        self.head = None
-        self.size = 0
+        self._head = None
+        self._size = 0
 
     def __len__(self):
         """Get length of the single linked list object.
@@ -121,7 +121,7 @@ class SingleLinkedList(object):
         Raises:
             None
         """
-        return self.size
+        return self._size
 
     def __str__(self):
         """Get string representation of the single linked list object.
@@ -135,7 +135,7 @@ class SingleLinkedList(object):
         Raises:
             None
         """
-        current_node = self.head
+        current_node = self._head
         output = ""
         while current_node:
             output += str(current_node) + " -> "
@@ -154,7 +154,7 @@ class SingleLinkedList(object):
         Raises:
             None
         """
-        self.size += 1
+        self._size += 1
 
     def _decrease_size(self):
         """Decrease size attribute of single linked list object by one.
@@ -168,10 +168,10 @@ class SingleLinkedList(object):
         Raises:
             None
         """
-        if self.size > 0:
-            self.size -= 1
+        if self._size > 0:
+            self._size -= 1
 
-    def get_size(self):
+    def size(self):
         """Returns number of node objects in the list.
 
         Parameters:
@@ -183,7 +183,7 @@ class SingleLinkedList(object):
         Raises:
             None
         """
-        return self.size
+        return self._size
 
     def is_empty(self):
         """Returns True if the array is empty.
@@ -197,10 +197,7 @@ class SingleLinkedList(object):
         Raises:
             None
         """
-        if self.size == 0:
-            return True
-        else:
-            return False
+        return self._size == 0
 
     def set_head(self, node):
         """Set the head attribute to a node reference.
@@ -214,7 +211,7 @@ class SingleLinkedList(object):
         Raises:
             None
         """
-        self.head = node
+        self._head = node
 
     def insert_at(self, index, data):
         """Insert a node containing the data into the list at the index.
@@ -229,16 +226,21 @@ class SingleLinkedList(object):
         Raises:
             IndexError: If the index is out of range
         """
-        if 0 > index or index > self.size:
+        if 0 > index or index > self._size:
             return IndexError('index out of range!')
 
-        # find it
-        # dann routine
-
-        # for i in range(self.item_count, index, -1):
-        #    self.primary_array[i] = self.primary_array[i-1]
-        #self.primary_array[index] = item
-        #self.item_count += 1
+        node = Node(data)
+        current_node = self._head
+        current_node_idx = 0
+        while current_node_idx != index:
+            current_node = current_node.get_next()
+            current_node_idx += 1
+        if current_node:
+            current_node.set_next(node)
+            node.set_next(current_node.get_next())
+        else:
+            self.set_head(node)
+        self._increase_size()
 
     def value_at(self, index):
         # returns the value of the nth item (starting at 0 for first)
@@ -310,10 +312,16 @@ class SingleLinkedList(object):
 
 
 def main():
-    ll = SingleLinkedList()
+    print("Init and fill single linked list.")
+    sll = SingleLinkedList()
+    print("Initial size: ", len(sll))
+    sll.insert_at(0, 'first_element')
+    print("List content: ", sll)
+    print("New size: ", sll.size())
+    
 
-    print("Initial size: ", len(ll))
-    ll.push(24)
+
+    """ ll.push(24)
     print("New size: ", len(ll))
     print("List content: ", ll)
     print("Pushing more")
@@ -333,7 +341,7 @@ def main():
     print("List content: ", ll)
     print("Pushing another onto end.")
     ll.append(365)
-    print("List content: ", ll)
+    print("List content: ", ll) """
 
 
 if __name__ == "__main__":
