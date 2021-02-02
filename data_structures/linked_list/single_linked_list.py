@@ -285,11 +285,31 @@ class SingleLinkedList(object):
         self.set_head(node)
         self._increase_size()
 
-    def value_at(self, index):
-        # returns the value of the nth item (starting at 0 for first)
-        pass
+    def delete_at(self, index):
+        """Delete a node in the list at the index.
 
-    # erase(index) - removes node at given index
+        Parameters:
+            index (int): Index to add the node at
+
+        Returns:
+            None
+
+        Raises:
+            IndexError: If the index is out of range
+        """
+        if 0 > index or index > self._size - 1:
+            return IndexError('index out of range!')
+
+        current_node = self._head
+        current_node_idx = 0
+        if index == 0:
+            self.set_head(current_node.get_next())
+        else:
+            while current_node_idx + 1 != index:
+                current_node = current_node.get_next()
+                current_node_idx += 1
+            current_node.set_next(current_node.get_next().get_next())
+        self._decrease_size()
 
     def pop_front(self):
         #  remove front item and return its value
@@ -305,6 +325,13 @@ class SingleLinkedList(object):
         else:
             raise IndexError("Unable to pop from empty list")
 
+    def value_at(self, index):
+        # returns the value of the nth item (starting at 0 for first)
+        pass
+
+    def find(self, data):
+        pass
+
     # Returns true if list contains the given value.
     def contains(self, value):
         found = False
@@ -317,7 +344,10 @@ class SingleLinkedList(object):
         return found
 
     # Deletes all instances of given value in list.
-    def delete(self, value):
+    def remove_first(self, value):
+        pass
+
+    def remove_all(self, value):
         current = self.head_
         prev = None
         while current:
@@ -329,9 +359,8 @@ class SingleLinkedList(object):
             prev = current
             current = current.get_next()
 
-    # remove_value(value) - removes the first item in the list with this value
-
-    # reverse() - reverses the list
+    def reverse(self):
+        pass
 
 
 def main():
@@ -343,11 +372,25 @@ def main():
     print("Fill single linked list.")
     sll.insert_at(0, 'first_item')
     sll.insert_at(0, 'second_item')
-    sll.insert_at(1, 'third_item')
+    sll.insert_at(2, 'third_item')
     sll.append('appended_item')
+    sll.append('another_appended_item')
     sll.prepend('prepended_item')
+    sll.prepend('_another_prepended_item')
     print("List content: ", sll)
     print("Size: ", sll.size())
+
+    print("Delete and pop data from the list.")
+    sll.delete_at(0)
+    sll.delete_at(2)
+    sll.delete_at(4)
+    print("List content: ", sll)
+    print("Size: ", sll.size())
+
+    print("Check out of range insertion and deletion.")
+    sll2 = SingleLinkedList()
+    print(sll2.delete_at(0))
+    #print(sll.insert_at(7, 'test'))
 
     """ ll.push(24)
     print("New size: ", len(ll))
