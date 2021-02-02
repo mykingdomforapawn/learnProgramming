@@ -268,17 +268,28 @@ class SingleLinkedList(object):
             self.set_head(node)
         self._increase_size()
 
+    def prepend(self, data):
+        """Prepend a node containing the data at the front of the list.
+
+        Parameters:
+            data (...): Data to add to the node
+
+        Returns:
+            None
+
+        Raises:
+            None
+        """
+        node = Node(data)
+        node.set_next(self._head)
+        self.set_head(node)
+        self._increase_size()
+
     def value_at(self, index):
         # returns the value of the nth item (starting at 0 for first)
         pass
 
     # erase(index) - removes node at given index
-
-    def push(self, value):
-        # adds an item to the front of the list
-        node = Node(value)
-        node.set_next(self.head_)
-        self.set_head(node)
 
     def pop_front(self):
         #  remove front item and return its value
@@ -330,15 +341,13 @@ def main():
     print("Size: ", sll.size())
 
     print("Fill single linked list.")
-    print("Initial size: ", len(sll))
     sll.insert_at(0, 'first_item')
-    print("List content: ", sll)
-    print("New size: ", sll.size())
+    sll.insert_at(0, 'second_item')
+    sll.insert_at(1, 'third_item')
     sll.append('appended_item')
-    sll.insert_at(1, 'inserted_item')
-
+    sll.prepend('prepended_item')
     print("List content: ", sll)
-    print("New size: ", sll.size())
+    print("Size: ", sll.size())
 
     """ ll.push(24)
     print("New size: ", len(ll))
