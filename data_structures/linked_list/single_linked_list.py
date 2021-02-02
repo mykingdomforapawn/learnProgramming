@@ -318,7 +318,7 @@ class SingleLinkedList(object):
             None
 
         Returns:
-            None
+            pop_data (...): Data from the first node
 
         Raises:
             IndexError: If the list is empty
@@ -329,24 +329,77 @@ class SingleLinkedList(object):
             self._decrease_size()
             return pop_data
         else:
-            raise IndexError("can not pop from empty list!")
+            return IndexError("can not pop from empty list!")
 
     def pop_back(self):
-        # removes end item and returns its value
-        if self.head_:
-            self.head_ = self.head_.get_next()
-        else:
-            raise IndexError("Unable to pop from empty list")
+        """Remove last node and return its data.
 
-    def value_at(self, index):
-        # returns the value of the nth item (starting at 0 for first)
+        Parameters:
+            None
+
+        Returns:
+            pop_data (...): Data from the last node
+
+        Raises:
+            IndexError: If the list is empty
+        """
+        current_node = self._head
+        if not current_node:
+            return IndexError("can not pop from empty list!")
+        else:
+            if not current_node.get_next():
+                pop_data = current_node.get_data()
+            else:
+                while current_node.get_next().get_next():
+                    current_node = current_node.get_next()
+                pop_data = current_node.get_next().get_data()
+                current_node.set_next(None)
+            self._decrease_size()
+            return pop_data
+
+    def data_at(self, index):
+        """Return data of the node at the index.
+
+        Parameters:
+            None
+
+        Returns:
+            data (...): Data from the node at the index
+
+        Raises:
+            IndexError: If the index is out of range
+        """
+        # TODO: implement
         pass
 
     def find(self, data):
+        """Search the next node with data equal to the input
+
+        Parameters:
+            data (...): Data to find in the list
+
+        Returns:
+            index (int): Index of the found found or None
+
+        Raises:
+            None
+        """
+        # TODO: implement
         pass
 
-    def contains(self, value):
-        # Returns true if list contains the given value.
+    def contains(self, data):
+        """Returns true if the list contains the data.
+
+        Parameters:
+            data (...): Data find in the list
+
+        Returns:
+            [...] (bool): Indicator if input data was found
+
+        Raises:
+            None
+        """
+        # TODO: implement
         found = False
         current = self.head_
         while current and not found:
@@ -357,11 +410,34 @@ class SingleLinkedList(object):
         return found
 
     def remove_first(self, value):
+        """Remove the first node with data equal to the input.
+
+        Parameters:
+            data (...): Data to remove in the list
+
+        Returns:
+            None
+
+        Raises:
+            None
+        """
+        # TODO: implement
         pass
 
     def remove_all(self, value):
-        # Deletes all instances of given value in list.
-        current = self.head_
+        """Remove all nodes with data equal to the input.
+
+        Parameters:
+            data (...): Data to remove in the list
+
+        Returns:
+            None
+
+        Raises:
+            None
+        """
+        # TODO: implement
+        current = self._head
         prev = None
         while current:
             if current.get_data() == value:
@@ -373,6 +449,17 @@ class SingleLinkedList(object):
             current = current.get_next()
 
     def reverse(self):
+        """Reverse the order of nodes in the list.
+
+        Parameters:
+            None
+
+        Returns:
+            None
+
+        Raises:
+            None
+        """
         pass
 
 
@@ -401,18 +488,21 @@ def main():
     print("Size: ", sll.size())
 
     print("Pop data from the list.")
-    print(sll.pop_front())
-    # print(sll.pop_back())
+    print("Pop front: ", sll.pop_front())
+    print("Pop_back: ", sll.pop_back())
     print("List content: ", sll)
     print("Size: ", sll.size())
 
     print("Check out of range insertion and deletion.")
-    sll2 = SingleLinkedList()
-    print(sll2.delete_at(0))
+    print(sll.insert_at(5, 'test'))
+    print(SingleLinkedList().delete_at(0))
+    print(SingleLinkedList().pop_back())
+    print(SingleLinkedList().pop_front())
+    # pop from empty
 
     # vllt zu raise IndexError umwandeln..
 
-    #print(sll.insert_at(7, 'test'))
+    # print(sll.insert_at(7, 'test'))
 
     """ ll.push(24)
     print("New size: ", len(ll))
