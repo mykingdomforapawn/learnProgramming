@@ -312,11 +312,24 @@ class SingleLinkedList(object):
         self._decrease_size()
 
     def pop_front(self):
-        #  remove front item and return its value
-        if self.head_:
-            self.head_ = self.head_.get_next()
+        """Remove front node and return its data.
+
+        Parameters:
+            None
+
+        Returns:
+            None
+
+        Raises:
+            IndexError: If the list is empty
+        """
+        if self._head:
+            pop_data = self._head.get_data()
+            self._head = self._head.get_next()
+            self._decrease_size()
+            return pop_data
         else:
-            raise IndexError("Unable to pop from empty list")
+            raise IndexError("can not pop from empty list!")
 
     def pop_back(self):
         # removes end item and returns its value
@@ -332,8 +345,8 @@ class SingleLinkedList(object):
     def find(self, data):
         pass
 
-    # Returns true if list contains the given value.
     def contains(self, value):
+        # Returns true if list contains the given value.
         found = False
         current = self.head_
         while current and not found:
@@ -343,11 +356,11 @@ class SingleLinkedList(object):
                 current = current.get_next()
         return found
 
-    # Deletes all instances of given value in list.
     def remove_first(self, value):
         pass
 
     def remove_all(self, value):
+        # Deletes all instances of given value in list.
         current = self.head_
         prev = None
         while current:
@@ -380,16 +393,25 @@ def main():
     print("List content: ", sll)
     print("Size: ", sll.size())
 
-    print("Delete and pop data from the list.")
+    print("Delete data from the list.")
     sll.delete_at(0)
     sll.delete_at(2)
     sll.delete_at(4)
     print("List content: ", sll)
     print("Size: ", sll.size())
 
+    print("Pop data from the list.")
+    print(sll.pop_front())
+    # print(sll.pop_back())
+    print("List content: ", sll)
+    print("Size: ", sll.size())
+
     print("Check out of range insertion and deletion.")
     sll2 = SingleLinkedList()
     print(sll2.delete_at(0))
+
+    # vllt zu raise IndexError umwandeln..
+
     #print(sll.insert_at(7, 'test'))
 
     """ ll.push(24)
