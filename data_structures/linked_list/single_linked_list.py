@@ -95,7 +95,7 @@ class SingleLinkedList(object):
     """Implemetation of a single linked list. """
 
     def __init__(self):
-        """Init single linked list object.
+        """Init list object.
 
         Parameters:
             None
@@ -110,7 +110,7 @@ class SingleLinkedList(object):
         self._size = 0
 
     def __len__(self):
-        """Get length of the single linked list object.
+        """Get length of the list object.
 
         Parameters:
             None
@@ -124,7 +124,7 @@ class SingleLinkedList(object):
         return self._size
 
     def __str__(self):
-        """Get string representation of the single linked list object.
+        """Get string representation of the list object.
 
         Parameters:
             None
@@ -143,7 +143,7 @@ class SingleLinkedList(object):
         return output
 
     def _increase_size(self):
-        """Increase size attribute of single linked list object by one.
+        """Increase size attribute of the list object by one.
 
         Parameters:
             None
@@ -157,7 +157,7 @@ class SingleLinkedList(object):
         self._size += 1
 
     def _decrease_size(self):
-        """Decrease size attribute of single linked list object by one.
+        """Decrease size attribute of the list object by one.
 
         Parameters:
             None
@@ -186,7 +186,7 @@ class SingleLinkedList(object):
         return self._size
 
     def is_empty(self):
-        """Returns True if the array is empty.
+        """Returns True if the list is empty.
 
         Parameters:
             None
@@ -232,12 +232,38 @@ class SingleLinkedList(object):
         node = Node(data)
         current_node = self._head
         current_node_idx = 0
-        while current_node_idx != index:
-            current_node = current_node.get_next()
-            current_node_idx += 1
         if current_node:
+            if index == 0:
+                self.set_head(node)
+                node.set_next(current_node)
+            else:
+                while current_node_idx + 1 != index:
+                    current_node = current_node.get_next()
+                    current_node_idx += 1
+                node.set_next(current_node.get_next())
+                current_node.set_next(node)
+        else:
+            self.set_head(node)
+        self._increase_size()
+
+    def append(self, data):
+        """Append a node containing the data at the end of the list.
+
+        Parameters:
+            data (...): Data to add to the node
+
+        Returns:
+            None
+
+        Raises:
+            None
+        """
+        node = Node(data)
+        current_node = self._head
+        if current_node:
+            while current_node.get_next():
+                current_node = current_node.get_next()
             current_node.set_next(node)
-            node.set_next(current_node.get_next())
         else:
             self.set_head(node)
         self._increase_size()
@@ -246,7 +272,6 @@ class SingleLinkedList(object):
         # returns the value of the nth item (starting at 0 for first)
         pass
 
-    # insert(index, value) - insert value at index, so current item at that index is pointed to by new item at index
     # erase(index) - removes node at given index
 
     def push(self, value):
@@ -254,19 +279,6 @@ class SingleLinkedList(object):
         node = Node(value)
         node.set_next(self.head_)
         self.set_head(node)
-
-    def append(self, value):
-        #  adds an item at the end
-        node = Node(value)
-        current = self.head_
-        if not current:
-            self.head_ = node
-            return
-
-        while current.get_next():
-            current = current.get_next()
-
-        current.set_next(node)
 
     def pop_front(self):
         #  remove front item and return its value
@@ -312,14 +324,21 @@ class SingleLinkedList(object):
 
 
 def main():
-    print("Init and fill single linked list.")
+    print("Init single linked list.")
     sll = SingleLinkedList()
+    print("List content: ", sll)
+    print("Size: ", sll.size())
+
+    print("Fill single linked list.")
     print("Initial size: ", len(sll))
-    sll.insert_at(0, 'first_element')
+    sll.insert_at(0, 'first_item')
     print("List content: ", sll)
     print("New size: ", sll.size())
-    
+    sll.append('appended_item')
+    sll.insert_at(1, 'inserted_item')
 
+    print("List content: ", sll)
+    print("New size: ", sll.size())
 
     """ ll.push(24)
     print("New size: ", len(ll))
