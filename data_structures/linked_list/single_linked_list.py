@@ -123,14 +123,6 @@ class SingleLinkedList(object):
         """
         return self.size
 
-# TODO: clear code if not needed
-        #count = 0
-        #current = self.head_
-        # while current:
-        #    count += 1
-        #    current = current.get_next()
-        # return count
-
     def __str__(self):
         """Get string representation of the single linked list object.
 
