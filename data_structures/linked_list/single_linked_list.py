@@ -369,8 +369,19 @@ class SingleLinkedList(object):
         Raises:
             IndexError: If the index is out of range
         """
-        # TODO: implement
-        pass
+        if 0 > index or index > self._size - 1:
+            return IndexError('index out of range!')
+
+        current_node = self._head
+        current_node_idx = 0
+        if current_node:
+            while current_node_idx != index:
+                current_node = current_node.get_next()
+                current_node_idx += 1
+            data = current_node.get_data()
+        else:
+            data = self._head
+        return data
 
     def find(self, data):
         """Search the next node with data equal to the input
@@ -403,7 +414,7 @@ class SingleLinkedList(object):
         found = False
         current = self.head_
         while current and not found:
-            if current.get_data() == value:
+            if current.get_data() == data:
                 found = True
             else:
                 current = current.get_next()
@@ -477,6 +488,12 @@ def main():
     sll.append('another_appended_item')
     sll.prepend('prepended_item')
     sll.prepend('_another_prepended_item')
+    print("List content: ", sll)
+    print("Size: ", sll.size())
+
+    print("Delete data from the list.")
+    print("First entry: ", sll.data_at(0))
+    print("Third entry: ", sll.data_at(2))
     print("List content: ", sll)
     print("Size: ", sll.size())
 
