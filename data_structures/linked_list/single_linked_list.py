@@ -384,19 +384,27 @@ class SingleLinkedList(object):
         return data
 
     def find(self, data):
-        """Search the next node with data equal to the input
+        """Search and return the next node with data equal to the input.
 
         Parameters:
             data (...): Data to find in the list
 
         Returns:
-            index (int): Index of the found found or None
+            current_node (Node): Node that contains the same data as the input
 
         Raises:
             None
         """
-        # TODO: implement
-        pass
+        current_node = self._head
+        if current_node:
+            while current_node.get_data() != data and current_node.get_next():
+                current_node = current_node.get_next()
+            if not current_node.get_next():
+                current_node = None
+        else:
+            current_node = None
+        return current_node
+        # TODO: Testen!
 
     def contains(self, data):
         """Returns true if the list contains the data.
@@ -491,13 +499,19 @@ def main():
     print("List content: ", sll)
     print("Size: ", sll.size())
 
-    print("Delete data from the list.")
+    print("Show data from the list via using index.")
     print("First entry: ", sll.data_at(0))
     print("Third entry: ", sll.data_at(2))
     print("List content: ", sll)
     print("Size: ", sll.size())
 
-    print("Delete data from the list.")
+    print("Find data in the list.")
+    print("Find 'prepended_item': ", sll.find('prepended_item'))
+    print("Find 'prepended_item_2': ", sll.find('prepended_item_2'))
+    print("List content: ", sll)
+    print("Size: ", sll.size())
+
+    print("Delete data from the list using the index.")
     sll.delete_at(0)
     sll.delete_at(2)
     sll.delete_at(4)
