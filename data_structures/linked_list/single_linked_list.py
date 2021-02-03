@@ -396,15 +396,13 @@ class SingleLinkedList(object):
             None
         """
         current_node = self._head
-        if current_node:
-            while current_node.get_data() != data and current_node.get_next():
+        found_node = None
+        while current_node and not found_node:
+            if current_node.get_data() == data:
+                found_node = current_node
+            else:
                 current_node = current_node.get_next()
-            if not current_node.get_next():
-                current_node = None
-        else:
-            current_node = None
-        return current_node
-        # TODO: Testen!
+        return found_node
 
     def contains(self, data):
         """Returns true if the list contains the data.
