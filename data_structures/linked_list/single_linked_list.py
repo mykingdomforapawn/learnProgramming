@@ -405,10 +405,10 @@ class SingleLinkedList(object):
         return found_node
 
     def contains(self, data):
-        """Returns true if the list contains the data.
+        """Returns True if the list contains the data.
 
         Parameters:
-            data (...): Data find in the list
+            data (...): Data to find in the list
 
         Returns:
             [...] (bool): Indicator if input data was found
@@ -416,15 +416,7 @@ class SingleLinkedList(object):
         Raises:
             None
         """
-        # TODO: implement
-        found = False
-        current = self.head_
-        while current and not found:
-            if current.get_data() == data:
-                found = True
-            else:
-                current = current.get_next()
-        return found
+        return self.find(data) != None
 
     def remove_first(self, value):
         """Remove the first node with data equal to the input.
@@ -506,6 +498,8 @@ def main():
     print("Find data in the list.")
     print("Find 'prepended_item': ", sll.find('prepended_item'))
     print("Find 'prepended_item_2': ", sll.find('prepended_item_2'))
+    print("Contains 'second_item': ", sll.contains('second_item'))
+    print("Contains 'second_item_2': ", sll.contains('second_item_2'))
     print("List content: ", sll)
     print("Size: ", sll.size())
 
