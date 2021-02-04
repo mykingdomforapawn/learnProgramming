@@ -275,24 +275,19 @@ class DoubleLinkedList(object):
         Raises:
             IndexError: If the index is out of range
         """
+        # TODO: HIER WEITER!
         if 0 > index or index > self._size:
             return IndexError('index out of range!')
 
-        node = Node(data)
-        current_node = self._head
+        current_node = self._head.get_next()
         current_node_idx = 0
-        if current_node:
-            if index == 0:
-                self.set_head(node)
-                node.set_next(current_node)
-            else:
-                while current_node_idx + 1 != index:
-                    current_node = current_node.get_next()
-                    current_node_idx += 1
-                node.set_next(current_node.get_next())
-                current_node.set_next(node)
-        else:
-            self.set_head(node)
+        while current_node:
+            if index == current_node_idx:
+                node = Node(data, current_node, current_node.get_prev())
+                current_node.get_prev().set_next(node)
+                current_node.set_prev(node)
+            current_node = current_node.get_next()
+            current_node_idx += 1
         self._increase_size()
 
     def append(self, data):
@@ -532,6 +527,10 @@ def main():
     print("List content: ", sll)
     print("Size: ", sll.size(), "\n")
 
+    sll.insert_at(0, 'first_item')
+    sll.insert_at(0, 'second_item')
+    print("List content: ", sll)
+    print("Size: ", sll.size(), "\n")
     """ print("Fill single linked list.")
     sll.insert_at(0, 'first_item')
     sll.insert_at(0, 'second_item')
