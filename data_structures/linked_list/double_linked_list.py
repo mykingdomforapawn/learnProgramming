@@ -248,6 +248,20 @@ class DoubleLinkedList(object):
         """
         self._head = node
 
+    def set_tail(self, node):
+        """Set the tail attribute to a node reference.
+
+        Parameters:
+            node (Node): Reference to a node object
+
+        Returns:
+            None
+
+        Raises:
+            None
+        """
+        self._tail = node
+
     def insert_at(self, index, data):
         """Insert a node containing the data into the list at the index.
 
