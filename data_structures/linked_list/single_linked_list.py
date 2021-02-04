@@ -384,25 +384,29 @@ class SingleLinkedList(object):
         return data
 
     def find(self, data):
-        """Search and return the next node with data equal to the input.
+        """Search and return the index of the next node with data equal to the input.
 
         Parameters:
             data (...): Data to find in the list
 
         Returns:
-            current_node (Node): Node that contains the same data as the input
+            found_node_idx (int): Index of the node that contains the same data as the input
 
         Raises:
             None
         """
         current_node = self._head
+        current_node_idx = 0
         found_node = None
+        found_node_idx = None
         while current_node and not found_node:
             if current_node.get_data() == data:
                 found_node = current_node
+                found_node_idx = current_node_idx
             else:
                 current_node = current_node.get_next()
-        return found_node
+                current_node_idx += 1
+        return found_node_idx
 
     def contains(self, data):
         """Returns True if the list contains the data.
@@ -416,9 +420,10 @@ class SingleLinkedList(object):
         Raises:
             None
         """
+
         return self.find(data) != None
 
-    def remove_first(self, value):
+    def remove_first(self, data):
         """Remove the first node with data equal to the input.
 
         Parameters:
@@ -430,8 +435,10 @@ class SingleLinkedList(object):
         Raises:
             None
         """
-        # TODO: implement
-        pass
+        _, index = self.find(data)
+        if index:
+            self.delete_at(index)
+        # TODO: Test
 
     def remove_all(self, value):
         """Remove all nodes with data equal to the input.
@@ -484,7 +491,9 @@ def main():
     sll.insert_at(2, 'third_item')
     sll.append('appended_item')
     sll.append('another_appended_item')
+    sll.append('another_appended_item')
     sll.prepend('prepended_item')
+    sll.prepend('_another_prepended_item')
     sll.prepend('_another_prepended_item')
     print("List content: ", sll)
     print("Size: ", sll.size())
@@ -526,28 +535,6 @@ def main():
     # vllt zu raise IndexError umwandeln..
 
     # print(sll.insert_at(7, 'test'))
-
-    """ ll.push(24)
-    print("New size: ", len(ll))
-    print("List content: ", ll)
-    print("Pushing more")
-    ll.push(6)
-    ll.push(783)
-    print("List content: ", ll)
-    print("popping...")
-    ll.pop()
-    print("List content: ", ll)
-    print("Does list contain 24?")
-    if ll.contains(24):
-        print("Yes")
-    else:
-        print("No")
-    print("Deleting 24")
-    ll.delete(24)
-    print("List content: ", ll)
-    print("Pushing another onto end.")
-    ll.append(365)
-    print("List content: ", ll) """
 
 
 if __name__ == "__main__":
