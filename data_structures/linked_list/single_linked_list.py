@@ -140,6 +140,7 @@ class SingleLinkedList(object):
         while current_node:
             output += str(current_node) + " -> "
             current_node = current_node.get_next()
+        output += "None"
         return output
 
     def _increase_size(self):
@@ -467,8 +468,14 @@ class SingleLinkedList(object):
         Raises:
             None
         """
-        for index in range(self._size):
-            self.insert_at(index, self.pop_back())
+        previous_node = None
+        current_node = self._head
+        while current_node is not None:
+            next_node = current_node.get_next()
+            current_node.set_next(previous_node)
+            previous_node = current_node
+            current_node = next_node
+        self._head = previous_node
 
 
 def main():
