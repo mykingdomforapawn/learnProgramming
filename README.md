@@ -9,3 +9,4 @@ Code that I wrote to consolidate knowledge and learn new programming techniques.
 
 ## data_structures
 - arrays: Run *arrray.py* to test a dynamic array implementation, operations can be added to *main()*
+- linked_list/single_linked_list: Run *single_linked_list.py* to test a dynamic array implementation, operations can be added to *main()*
