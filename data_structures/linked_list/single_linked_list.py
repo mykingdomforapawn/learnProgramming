@@ -420,7 +420,6 @@ class SingleLinkedList(object):
         Raises:
             None
         """
-
         return self.find(data) != None
 
     def remove_first(self, data):
@@ -435,12 +434,11 @@ class SingleLinkedList(object):
         Raises:
             None
         """
-        _, index = self.find(data)
+        index = self.find(data)
         if index:
             self.delete_at(index)
-        # TODO: Test
 
-    def remove_all(self, value):
+    def remove_all(self, data):
         """Remove all nodes with data equal to the input.
 
         Parameters:
@@ -452,17 +450,10 @@ class SingleLinkedList(object):
         Raises:
             None
         """
-        # TODO: implement
-        current = self._head
-        prev = None
-        while current:
-            if current.get_data() == value:
-                if prev:
-                    prev.set_next(current.get_next())
-                else:
-                    self.head_ = current.get_next()
-            prev = current
-            current = current.get_next()
+        index = self.find(data)
+        while index != None:
+            self.delete_at(index)
+            index = self.find(data)
 
     def reverse(self):
         """Reverse the order of nodes in the list.
@@ -483,7 +474,7 @@ def main():
     print("Init single linked list.")
     sll = SingleLinkedList()
     print("List content: ", sll)
-    print("Size: ", sll.size())
+    print("Size: ", sll.size(), "\n")
 
     print("Fill single linked list.")
     sll.insert_at(0, 'first_item')
@@ -493,16 +484,16 @@ def main():
     sll.append('another_appended_item')
     sll.append('another_appended_item')
     sll.prepend('prepended_item')
-    sll.prepend('_another_prepended_item')
-    sll.prepend('_another_prepended_item')
+    sll.prepend('another_prepended_item')
+    sll.prepend('another_prepended_item')
     print("List content: ", sll)
-    print("Size: ", sll.size())
+    print("Size: ", sll.size(), "\n")
 
     print("Show data from the list via using index.")
     print("First entry: ", sll.data_at(0))
     print("Third entry: ", sll.data_at(2))
     print("List content: ", sll)
-    print("Size: ", sll.size())
+    print("Size: ", sll.size(), "\n")
 
     print("Find data in the list.")
     print("Find 'prepended_item': ", sll.find('prepended_item'))
@@ -510,26 +501,34 @@ def main():
     print("Contains 'second_item': ", sll.contains('second_item'))
     print("Contains 'second_item_2': ", sll.contains('second_item_2'))
     print("List content: ", sll)
-    print("Size: ", sll.size())
+    print("Size: ", sll.size(), "\n")
+
+    print("Remove data from the list.")
+    print("Remove the first 'another_appended_item': ",
+          sll.remove_first('another_appended_item'))
+    print("Remove all 'another_prepended_item': ",
+          sll.remove_all('another_prepended_item'))
+    print("List content: ", sll)
+    print("Size: ", sll.size(), "\n")
 
     print("Delete data from the list using the index.")
     sll.delete_at(0)
     sll.delete_at(2)
     sll.delete_at(4)
     print("List content: ", sll)
-    print("Size: ", sll.size())
+    print("Size: ", sll.size(), "\n")
 
     print("Pop data from the list.")
     print("Pop front: ", sll.pop_front())
     print("Pop_back: ", sll.pop_back())
     print("List content: ", sll)
-    print("Size: ", sll.size())
+    print("Size: ", sll.size(), "\n")
 
     print("Check out of range insertion and deletion.")
     print(sll.insert_at(5, 'test'))
     print(SingleLinkedList().delete_at(0))
     print(SingleLinkedList().pop_back())
-    print(SingleLinkedList().pop_front())
+    print(SingleLinkedList().pop_front(), "\n")
     # pop from empty
 
     # vllt zu raise IndexError umwandeln..
