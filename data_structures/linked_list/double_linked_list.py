@@ -1,15 +1,16 @@
-"""Simple implementation of double linked lists. """
+"""Simple implementation of double linked lists with sentinels. """
 
 
 class Node:
     """Implemetation of a list node. """
 
-    def __init__(self, data=None, next=None):
+    def __init__(self, data=None, next=None, prev=None):
         """Init node object.
 
         Parameters:
             data (...): Data that is stored in this node
             next (Node): Reference to the next node in the list
+            prev (Node): Reference to the previous node in the list
 
         Returns:
             None
@@ -17,8 +18,9 @@ class Node:
         Raises:
             None
         """
-        self.data = data
-        self.next = next
+        self._data = data
+        self._next = next
+        self._prev = prev
 
     def __str__(self):
         """Get string representation of the data from a node.
@@ -32,7 +34,7 @@ class Node:
         Raises:
             None
         """
-        return str(self.data)
+        return str(self._data)
 
     def get_data(self):
         """Get data from a node object.
@@ -46,7 +48,7 @@ class Node:
         Raises:
             None
         """
-        return self.data
+        return self._data
 
     def set_data(self, data):
         """Set data in a node object.
@@ -60,7 +62,7 @@ class Node:
         Raises:
             None
         """
-        self.data = data
+        self._data = data
 
     def get_next(self):
         """Get the next node object after this one.
@@ -74,7 +76,21 @@ class Node:
         Raises:
             None
         """
-        return self.next
+        return self._next
+
+    def get_prev(self):
+        """Get the previous node object before this one.
+
+        Parameters:
+            None
+
+        Returns:
+            [...] (Node): Previous node object before this one
+
+        Raises:
+            None
+        """
+        return self._prev
 
     def set_next(self, next):
         """Set the reference to the next node object after this one.
@@ -88,7 +104,21 @@ class Node:
         Raises:
             None
         """
-        self.next = next
+        self._next = next
+
+    def set_prev(self, prev):
+        """Set the reference to the previous node object before this one.
+
+        Parameters:
+            prev (Node): Reference to the previous node in the list
+
+        Returns:
+            None
+
+        Raises:
+            None
+        """
+        self._prev = prev
 
 
 class SingleLinkedList(object):
