@@ -171,9 +171,10 @@ class DoubleLinkedList(object):
         current_node = self._head
         output = ""
         while current_node:
-            output += str(current_node) + " -> "
+            output += str(current_node)
+            if current_node.get_next():
+                output += " -> "
             current_node = current_node.get_next()
-        output += "None"
         return output
 
     def _increase_size(self):
@@ -517,7 +518,7 @@ def main():
     print("List content: ", sll)
     print("Size: ", sll.size(), "\n")
 
-    print("Fill single linked list.")
+    """ print("Fill single linked list.")
     sll.insert_at(0, 'first_item')
     sll.insert_at(0, 'second_item')
     sll.insert_at(2, 'third_item')
@@ -581,6 +582,7 @@ def main():
     sll.reverse()
     print("List content: ", sll)
     print("Size: ", sll.size(), "\n")
+ """
 
 
 if __name__ == "__main__":
