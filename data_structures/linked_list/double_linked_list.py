@@ -121,7 +121,7 @@ class Node:
         self._prev = prev
 
 
-class SingleLinkedList(object):
+class DoubleLinkedList(object):
     """Implemetation of a double linked list. """
 
     def __init__(self):
@@ -136,7 +136,10 @@ class SingleLinkedList(object):
         Raises:
             None
         """
-        self._head = None
+        self._head = Node()
+        self._tail = Node()
+        self._head.set_next(self._tail)
+        self._tail.set_prev(self._head)
         self._size = 0
 
     def __len__(self):
@@ -510,7 +513,7 @@ class SingleLinkedList(object):
 
 def main():
     print("Init single linked list.")
-    sll = SingleLinkedList()
+    sll = DoubleLinkedList()
     print("List content: ", sll)
     print("Size: ", sll.size(), "\n")
 
@@ -563,9 +566,9 @@ def main():
 
     print("Check 'out of range' insertion and deletion.")
     print(sll.insert_at(5, 'test'))
-    print(SingleLinkedList().delete_at(0))
-    print(SingleLinkedList().pop_back())
-    print(SingleLinkedList().pop_front(), "\n")
+    print(DoubleLinkedList().delete_at(0))
+    print(DoubleLinkedList().pop_back())
+    print(DoubleLinkedList().pop_front(), "\n")
     print("List content: ", sll)
     print("Size: ", sll.size(), "\n")
 
