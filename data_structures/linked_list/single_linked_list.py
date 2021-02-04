@@ -467,7 +467,8 @@ class SingleLinkedList(object):
         Raises:
             None
         """
-        pass
+        for index in range(self._size):
+            self.insert_at(index, self.pop_back())
 
 
 def main():
@@ -514,7 +515,6 @@ def main():
     print("Delete data from the list using the index.")
     sll.delete_at(0)
     sll.delete_at(2)
-    sll.delete_at(4)
     print("List content: ", sll)
     print("Size: ", sll.size(), "\n")
 
@@ -524,16 +524,23 @@ def main():
     print("List content: ", sll)
     print("Size: ", sll.size(), "\n")
 
-    print("Check out of range insertion and deletion.")
+    print("Check 'out of range' insertion and deletion.")
     print(sll.insert_at(5, 'test'))
     print(SingleLinkedList().delete_at(0))
     print(SingleLinkedList().pop_back())
     print(SingleLinkedList().pop_front(), "\n")
-    # pop from empty
+    print("List content: ", sll)
+    print("Size: ", sll.size(), "\n")
 
-    # vllt zu raise IndexError umwandeln..
-
-    # print(sll.insert_at(7, 'test'))
+    print("Add a few items and reverse the list.")
+    sll.append('added_back')
+    sll.append('added_back_2')
+    sll.prepend('added_front')
+    sll.prepend('added_front_2')
+    print("List content: ", sll)
+    sll.reverse()
+    print("List content: ", sll)
+    print("Size: ", sll.size(), "\n")
 
 
 if __name__ == "__main__":
