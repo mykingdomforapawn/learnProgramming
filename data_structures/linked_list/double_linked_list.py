@@ -497,14 +497,19 @@ class DoubleLinkedList(object):
         Raises:
             None
         """
-        previous_node = None
+        #previous_node = None
+
         current_node = self._head
+        #first_node = self._head.get_next()
+        #last_node = self._tail.get_prev()
         while current_node is not None:
             next_node = current_node.get_next()
-            current_node.set_next(previous_node)
-            previous_node = current_node
-            current_node = next_node
-        self._head = previous_node
+            current_node.set_next(current_node.get_prev())
+            current_node.set_prev(next_node)
+            current_node = current_node.get_prev()  # ext_node
+        head_node = self._head
+        self._head = self._tail
+        self._tail = head_node
 
 
 def main():
@@ -559,29 +564,24 @@ def main():
     print("Pop_back: ", dll.pop_back())
     print("List content: ", dll)
     print("Size: ", dll.size(), "\n")
-    """
-    
-
-    
 
     print("Check 'out of range' insertion and deletion.")
-    print(sll.insert_at(5, 'test'))
+    print(dll.insert_at(5, 'test'))
     print(DoubleLinkedList().delete_at(0))
     print(DoubleLinkedList().pop_back())
     print(DoubleLinkedList().pop_front(), "\n")
-    print("List content: ", sll)
-    print("Size: ", sll.size(), "\n")
+    print("List content: ", dll)
+    print("Size: ", dll.size(), "\n")
 
     print("Add a few items and reverse the list.")
-    sll.append('added_back')
-    sll.append('added_back_2')
-    sll.prepend('added_front')
-    sll.prepend('added_front_2')
-    print("List content: ", sll)
-    sll.reverse()
-    print("List content: ", sll)
-    print("Size: ", sll.size(), "\n")
- """
+    dll.append('added_back')
+    dll.append('added_back_2')
+    dll.prepend('added_front')
+    dll.prepend('added_front_2')
+    print("List content: ", dll)
+    dll.reverse()
+    print("List content: ", dll)
+    print("Size: ", dll.size(), "\n")
 
 
 if __name__ == "__main__":
