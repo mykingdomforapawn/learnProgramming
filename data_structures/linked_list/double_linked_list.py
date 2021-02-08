@@ -308,7 +308,7 @@ class DoubleLinkedList(object):
         self._increase_size()
 
     def prepend(self, data):
-        """Prepend a node containing the data at the front of the list.
+        """Prepend a node containing the data in the front of the list.
 
         Parameters:
             data (...): Data to add to the node
@@ -319,9 +319,9 @@ class DoubleLinkedList(object):
         Raises:
             None
         """
-        node = Node(data)
-        node.set_next(self._head)
-        self.set_head(node)
+        node = Node(data, self._head.get_next(), self._head)
+        self._head.set_next(node)
+        self._head.get_next().set_prev(node)
         self._increase_size()
 
     def delete_at(self, index):
@@ -529,14 +529,12 @@ def main():
     dll.append('appended_item')
     dll.append('another_appended_item')
     dll.append('another_appended_item')
+    dll.prepend('prepended_item')
+    dll.prepend('another_prepended_item')
+    dll.prepend('another_prepended_item')
     print("List content: ", dll)
     print("Size: ", dll.size(), "\n")
     """
-    sll.prepend('prepended_item')
-    sll.prepend('another_prepended_item')
-    sll.prepend('another_prepended_item')
-    print("List content: ", sll)
-    print("Size: ", sll.size(), "\n")
 
     print("Show data from the list via using index.")
     print("First entry: ", sll.data_at(0))
