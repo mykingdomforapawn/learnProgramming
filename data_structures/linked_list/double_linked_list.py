@@ -319,15 +319,15 @@ class DoubleLinkedList(object):
             None
         """
         node = Node(data, self._head.get_next(), self._head)
-        self._head.set_next(node)
         self._head.get_next().set_prev(node)
+        self._head.set_next(node)
         self._increase_size()
 
     def delete_at(self, index):
         """Delete a node in the list at the index.
 
         Parameters:
-            index (int): Index to add the node at
+            index (int): Index to delete the node at
 
         Returns:
             None
@@ -338,15 +338,14 @@ class DoubleLinkedList(object):
         if 0 > index or index > self._size - 1:
             return IndexError('index out of range!')
 
-        current_node = self._head
+        current_node = self._head.get_next()
         current_node_idx = 0
-        if index == 0:
-            self.set_head(current_node.get_next())
-        else:
-            while current_node_idx + 1 != index:
-                current_node = current_node.get_next()
-                current_node_idx += 1
-            current_node.set_next(current_node.get_next().get_next())
+        while current_node:
+            if index == current_node_idx:
+                current_node.get_prev().set_next(current_node.get_next())
+                current_node.get_next().set_prev(current_node.get_prev())
+            current_node = current_node.get_next()
+            current_node_idx += 1
         self._decrease_size()
 
     def pop_front(self):
@@ -553,12 +552,14 @@ def main():
     print("List content: ", dll)
     print("Size: ", dll.size(), "\n")
 
-    """
     print("Delete data from the list using the index.")
-    sll.delete_at(0)
-    sll.delete_at(2)
-    print("List content: ", sll)
-    print("Size: ", sll.size(), "\n")
+    dll.delete_at(0)
+    dll.delete_at(2)
+    print("List content: ", dll)
+    print("Size: ", dll.size(), "\n")
+
+    """
+    
 
     print("Pop data from the list.")
     print("Pop front: ", sll.pop_front())
