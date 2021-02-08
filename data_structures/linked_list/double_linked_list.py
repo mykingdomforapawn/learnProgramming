@@ -540,22 +540,20 @@ def main():
     print("Find data in the list.")
     print("Find 'prepended_item': ", dll.find('prepended_item'))
     print("Find 'prepended_item_2': ", dll.find('prepended_item_2'))
-    #print("Contains 'second_item': ", sll.contains('second_item'))
-    #print("Contains 'second_item_2': ", sll.contains('second_item_2'))
+    print("Contains 'second_item': ", dll.contains('second_item'))
+    print("Contains 'second_item_2': ", dll.contains('second_item_2'))
+    print("List content: ", dll)
+    print("Size: ", dll.size(), "\n")
+
+    print("Remove data from the list.")
+    print("Remove the first 'another_appended_item': ",
+          dll.remove_first('another_appended_item'))
+    print("Remove all 'another_prepended_item': ",
+          dll.remove_all('another_prepended_item'))
     print("List content: ", dll)
     print("Size: ", dll.size(), "\n")
 
     """
-    
-
-    print("Remove data from the list.")
-    print("Remove the first 'another_appended_item': ",
-          sll.remove_first('another_appended_item'))
-    print("Remove all 'another_prepended_item': ",
-          sll.remove_all('another_prepended_item'))
-    print("List content: ", sll)
-    print("Size: ", sll.size(), "\n")
-
     print("Delete data from the list using the index.")
     sll.delete_at(0)
     sll.delete_at(2)
