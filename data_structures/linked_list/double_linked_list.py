@@ -430,7 +430,7 @@ class DoubleLinkedList(object):
         Raises:
             None
         """
-        current_node = self._head
+        current_node = self._head.get_next()
         current_node_idx = 0
         found_node = None
         found_node_idx = None
@@ -537,14 +537,16 @@ def main():
     print("List content: ", dll)
     print("Size: ", dll.size(), "\n")
 
-    """
     print("Find data in the list.")
-    print("Find 'prepended_item': ", sll.find('prepended_item'))
-    print("Find 'prepended_item_2': ", sll.find('prepended_item_2'))
-    print("Contains 'second_item': ", sll.contains('second_item'))
-    print("Contains 'second_item_2': ", sll.contains('second_item_2'))
-    print("List content: ", sll)
-    print("Size: ", sll.size(), "\n")
+    print("Find 'prepended_item': ", dll.find('prepended_item'))
+    print("Find 'prepended_item_2': ", dll.find('prepended_item_2'))
+    #print("Contains 'second_item': ", sll.contains('second_item'))
+    #print("Contains 'second_item_2': ", sll.contains('second_item_2'))
+    print("List content: ", dll)
+    print("Size: ", dll.size(), "\n")
+
+    """
+    
 
     print("Remove data from the list.")
     print("Remove the first 'another_appended_item': ",
