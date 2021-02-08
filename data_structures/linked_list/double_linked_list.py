@@ -360,9 +360,10 @@ class DoubleLinkedList(object):
         Raises:
             IndexError: If the list is empty
         """
-        if self._head:
-            pop_data = self._head.get_data()
-            self._head = self._head.get_next()
+        if self._size > 0:
+            pop_data = self._head.get_next().get_data()
+            self._head.set_next(self._head.get_next().get_next())
+            self._head.get_next().set_prev(self._head)
             self._decrease_size()
             return pop_data
         else:
@@ -380,19 +381,14 @@ class DoubleLinkedList(object):
         Raises:
             IndexError: If the list is empty
         """
-        current_node = self._head
-        if not current_node:
-            return IndexError("can not pop from empty list!")
-        else:
-            if not current_node.get_next():
-                pop_data = current_node.get_data()
-            else:
-                while current_node.get_next().get_next():
-                    current_node = current_node.get_next()
-                pop_data = current_node.get_next().get_data()
-                current_node.set_next(None)
+        if self._size > 0:
+            pop_data = self._tail.get_prev().get_data()
+            self._tail.set_prev(self._tail.get_prev().get_prev())
+            self._tail.get_prev().set_next(self._tail)
             self._decrease_size()
             return pop_data
+        else:
+            return IndexError("can not pop from empty list!")
 
     def data_at(self, index):
         """Return data of the node at the index.
@@ -558,14 +554,15 @@ def main():
     print("List content: ", dll)
     print("Size: ", dll.size(), "\n")
 
+    print("Pop data from the list.")
+    print("Pop front: ", dll.pop_front())
+    print("Pop_back: ", dll.pop_back())
+    print("List content: ", dll)
+    print("Size: ", dll.size(), "\n")
     """
     
 
-    print("Pop data from the list.")
-    print("Pop front: ", sll.pop_front())
-    print("Pop_back: ", sll.pop_back())
-    print("List content: ", sll)
-    print("Size: ", sll.size(), "\n")
+    
 
     print("Check 'out of range' insertion and deletion.")
     print(sll.insert_at(5, 'test'))
