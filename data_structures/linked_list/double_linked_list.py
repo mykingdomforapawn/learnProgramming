@@ -302,14 +302,9 @@ class DoubleLinkedList(object):
         Raises:
             None
         """
-        node = Node(data)
-        current_node = self._head
-        if current_node:
-            while current_node.get_next():
-                current_node = current_node.get_next()
-            current_node.set_next(node)
-        else:
-            self.set_head(node)
+        node = Node(data, self._tail, self._tail.get_prev())
+        self._tail.get_prev().set_next(node)
+        self._tail.set_prev(node)
         self._increase_size()
 
     def prepend(self, data):
@@ -523,21 +518,20 @@ class DoubleLinkedList(object):
 
 def main():
     print("Init single linked list.")
-    sll = DoubleLinkedList()
-    print("List content: ", sll)
-    print("Size: ", sll.size(), "\n")
+    dll = DoubleLinkedList()
+    print("List content: ", dll)
+    print("Size: ", dll.size(), "\n")
 
-    sll.insert_at(0, 'first_item')
-    sll.insert_at(0, 'second_item')
-    print("List content: ", sll)
-    print("Size: ", sll.size(), "\n")
-    """ print("Fill single linked list.")
-    sll.insert_at(0, 'first_item')
-    sll.insert_at(0, 'second_item')
-    sll.insert_at(2, 'third_item')
-    sll.append('appended_item')
-    sll.append('another_appended_item')
-    sll.append('another_appended_item')
+    print("Fill double linked list.")
+    dll.insert_at(0, 'first_item')
+    dll.insert_at(0, 'second_item')
+    dll.insert_at(2, 'third_item')
+    dll.append('appended_item')
+    dll.append('another_appended_item')
+    dll.append('another_appended_item')
+    print("List content: ", dll)
+    print("Size: ", dll.size(), "\n")
+    """
     sll.prepend('prepended_item')
     sll.prepend('another_prepended_item')
     sll.prepend('another_prepended_item')
