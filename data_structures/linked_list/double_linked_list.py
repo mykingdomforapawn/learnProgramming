@@ -275,7 +275,6 @@ class DoubleLinkedList(object):
         Raises:
             IndexError: If the index is out of range
         """
-        # TODO: HIER WEITER!
         if 0 > index or index > self._size:
             return IndexError('index out of range!')
 
@@ -411,15 +410,12 @@ class DoubleLinkedList(object):
         if 0 > index or index > self._size - 1:
             return IndexError('index out of range!')
 
-        current_node = self._head
+        current_node = self._head.get_next()
         current_node_idx = 0
-        if current_node:
-            while current_node_idx != index:
-                current_node = current_node.get_next()
-                current_node_idx += 1
-            data = current_node.get_data()
-        else:
-            data = self._head
+        while current_node_idx != index:
+            current_node = current_node.get_next()
+            current_node_idx += 1
+        data = current_node.get_data()
         return data
 
     def find(self, data):
@@ -534,14 +530,14 @@ def main():
     dll.prepend('another_prepended_item')
     print("List content: ", dll)
     print("Size: ", dll.size(), "\n")
-    """
 
     print("Show data from the list via using index.")
-    print("First entry: ", sll.data_at(0))
-    print("Third entry: ", sll.data_at(2))
-    print("List content: ", sll)
-    print("Size: ", sll.size(), "\n")
+    print("First entry: ", dll.data_at(0))
+    print("Third entry: ", dll.data_at(2))
+    print("List content: ", dll)
+    print("Size: ", dll.size(), "\n")
 
+    """
     print("Find data in the list.")
     print("Find 'prepended_item': ", sll.find('prepended_item'))
     print("Find 'prepended_item_2': ", sll.find('prepended_item_2'))
