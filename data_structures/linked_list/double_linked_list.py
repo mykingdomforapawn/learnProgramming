@@ -497,16 +497,12 @@ class DoubleLinkedList(object):
         Raises:
             None
         """
-        #previous_node = None
-
         current_node = self._head
-        #first_node = self._head.get_next()
-        #last_node = self._tail.get_prev()
         while current_node is not None:
             next_node = current_node.get_next()
             current_node.set_next(current_node.get_prev())
             current_node.set_prev(next_node)
-            current_node = current_node.get_prev()  # ext_node
+            current_node = current_node.get_prev()
         head_node = self._head
         self._head = self._tail
         self._tail = head_node
