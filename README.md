@@ -1,4 +1,6 @@
 # learnProgramming
+> This entire repository is a working progress. Next up are some queue, stack and tree implementations.
+
 
 ## Table of contents:
 - [What is it?](#what-is-it)
