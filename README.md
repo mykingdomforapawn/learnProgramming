@@ -6,8 +6,8 @@
 - [What is it?](#what-is-it)
 - [Why did I do it?](#why-did-i-do-it)
 - [What is in it?](#what-is-in-it)
-  - [algorithmic_complexity](###algorithmic_complexity)
-  - [data_structures](###data_structures)
+  - [algorithmic_complexity](algorithmic_complexity)
+  - [data_structures](data_structures)
 
 ---
 
