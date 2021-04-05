@@ -136,7 +136,23 @@ class ArrayStack:
         self.item_count += 1
 
     def top(self):
-        pass
+        """Return the last item of the array.
+
+        Parameters:
+            None
+
+        Returns:
+            pop_item (int): Item that now is deleted from the array
+
+        Raises:
+            IndexError: If stack is empty
+        """
+        if self.is_empty():
+            return IndexError('the stack is empty!')
+
+        top_item = self.primary_array[self.item_count - 1]
+
+        return top_item
 
     def pop(self):
         """Delete and return the last item of the array, decrease capacity if possible.
@@ -174,11 +190,18 @@ def main():
     print(x.is_empty())
     print("Stack:", x.list(), ", Size:", x.size())
 
+    print("Show the top item in the stack.")
+    print(x.top())
+    print("Stack:", x.list(), ", Size:", x.size())
+
     print("Pop items from stack.")
     print(x.pop())
     print(x.pop())
     print(x.pop())
+    print("Stack:", x.list(), ", Size:", x.size())
 
+    print("Show the top item in the stack.")
+    print(x.top())
     print("Stack:", x.list(), ", Size:", x.size())
 
 
