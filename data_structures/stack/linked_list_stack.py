@@ -94,6 +94,143 @@ class Node:
 class LinkedListStack:
     """Stack implemetation class. """
 
+    def __init__(self):
+        """Init list object.
+
+        Parameters:
+            None
+
+        Returns:
+            None
+
+        Raises:
+            None
+        """
+        self._head = None
+        self._size = 0
+
+    def __len__(self):
+        """Get length of the list object.
+
+        Parameters:
+            None
+
+        Returns:
+            [...] (int): Number of data nodes in the list object
+
+        Raises:
+            None
+        """
+        return self._size
+
+    def __str__(self):
+        """Get string representation of the list object.
+
+        Parameters:
+            None
+
+        Returns:
+            output (str): String representation of the list object
+
+        Raises:
+            None
+        """
+        current_node = self._head
+        output = ""
+        while current_node:
+            output += str(current_node) + " -> "
+            current_node = current_node.get_next()
+        output += "None"
+        return output
+
+    def _increase_size(self):
+        """Increase size attribute of the list object by one.
+
+        Parameters:
+            None
+
+        Returns:
+            None
+
+        Raises:
+            None
+        """
+        self._size += 1
+
+    def _decrease_size(self):
+        """Decrease size attribute of the list object by one.
+
+        Parameters:
+            None
+
+        Returns:
+            None
+
+        Raises:
+            None
+        """
+        if self._size > 0:
+            self._size -= 1
+
+    def size(self):
+        """Returns number of node objects in the list.
+
+        Parameters:
+            None
+
+        Returns:
+            [...] (int): Number of items in the array
+
+        Raises:
+            None
+        """
+        return self._size
+
+    def is_empty(self):
+        """Returns True if the list is empty.
+
+        Parameters:
+            None
+
+        Returns:
+            [...] (bool): Indicator if array is empty
+
+        Raises:
+            None
+        """
+        return self._size == 0
+
+    def set_head(self, node):
+        """Set the head attribute to a node reference.
+
+        Parameters:
+            node (Node): Reference to a node object
+
+        Returns:
+            None
+
+        Raises:
+            None
+        """
+        self._head = node
+
+    def push(data):
+        """Prepend a node containing the data at the front of the list.
+
+        Parameters:
+            data (...): Data to add to the node
+
+        Returns:
+            None
+
+        Raises:
+            None
+        """
+        node = Node(data)
+        node.set_next(self._head)
+        self.set_head(node)
+        self._increase_size()
+
 
 def main():
 
