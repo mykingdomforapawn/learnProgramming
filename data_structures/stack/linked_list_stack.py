@@ -214,7 +214,7 @@ class LinkedListStack:
         """
         self._head = node
 
-    def push(data):
+    def push(self, data):
         """Prepend a node containing the data at the front of the list.
 
         Parameters:
@@ -230,6 +230,45 @@ class LinkedListStack:
         node.set_next(self._head)
         self.set_head(node)
         self._increase_size()
+
+    def top(self):
+        """Return data of the front node.
+
+        Parameters:
+            None
+
+        Returns:
+            top_data (...): Data from the first node
+
+        Raises:
+            IndexError: If stack is empty
+        """
+
+        if self.is_empty():
+            return IndexError('the stack is empty!')
+
+        top_data = self._head.get_data()
+        return top_data
+
+    def pop(self):
+        """Remove front node and return its data.
+
+        Parameters:
+            None
+
+        Returns:
+            pop_data (...): Data from the first node
+
+        Raises:
+            IndexError: If stack is empty
+        """
+        if self.is_empty():
+            return IndexError('the stack is empty!')
+
+        pop_data = self._head.get_data()
+        self._head = self._head.get_next()
+        self._decrease_size()
+        return pop_data
 
 
 def main():
