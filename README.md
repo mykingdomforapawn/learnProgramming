@@ -1,5 +1,5 @@
 # learnProgramming
-> This entire repository is a working progress. Next up are some queue, stack and tree implementations.
+> This entire repository is a working progress. Next up are some queue, hash table and search tree implementations.
 
 
 ## Table of contents:
@@ -27,5 +27,9 @@ I started this repository after reading [this article](https://www.freecodecamp.
 
 ### data_structures
 - arrays: Run *arrray.py* to test a dynamic array implementation, operations can be added to *main()*
-- linked_list/single_linked_list: Run *single_linked_list.py* to test a dynamic array implementation, operations can be added to *main()*
-- linked_list/double_linked_list: Run *double_linked_list.py* to test a dynamic array implementation, operations can be added to *main()*
+- linked_list/single_linked_list: Run *single_linked_list.py* to test a single linked list implementation, operations can be added to *main()*
+- linked_list/double_linked_list: Run *double_linked_list.py* to test a double linked list implementation, operations can be added to *main()*
+- stack/array_stack: Run *array_stack.py* to test an array based stack implementation, operations can be added to *main()*
+- stack/linked_list_stack: Run *linked_list_stack.py* to test a single linked list based stack implementation, operations can be added to *main()*
+- queue/array_queue:
+- queue/linked_list_queue:
