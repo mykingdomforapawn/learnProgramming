@@ -83,8 +83,9 @@ class ArrayStack:
         Raises:
             None
         """
-        for _ in self.primary_array:
-            return " ".join(str(self.primary_array[x]) for x in range(self.item_count))
+        if not self.is_empty():
+            for _ in self.primary_array:
+                return " ".join(str(self.primary_array[x]) for x in range(self.item_count))
 
     def size(self):
         """Returns number of items in the stack.
@@ -147,7 +148,7 @@ class ArrayStack:
             pop_item (int): Item that now is deleted from the array
 
         Raises:
-            IndexError: If the index is out of range
+            IndexError: If stack is empty
         """
         if self.is_empty():
             return IndexError('the stack is empty!')
@@ -159,3 +160,27 @@ class ArrayStack:
             self._resize(self.array_capacity // 2)
 
         return pop_item
+
+
+def main():
+
+    print("Init and push items to stack.")
+    x = ArrayStack()
+    x.push(10)
+    x.push(20)
+    print("Stack:", x.list(), ", Size:", x.size())
+
+    print("Check if array is empty.")
+    print(x.is_empty())
+    print("Stack:", x.list(), ", Size:", x.size())
+
+    print("Pop items from stack.")
+    print(x.pop())
+    print(x.pop())
+    print(x.pop())
+
+    print("Stack:", x.list(), ", Size:", x.size())
+
+
+if __name__ == "__main__":
+    main()
