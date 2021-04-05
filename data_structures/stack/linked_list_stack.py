@@ -277,25 +277,25 @@ def main():
     x = LinkedListStack()
     x.push(10)
     x.push(20)
-    print("Stack:", x.list(), ", Size:", x.size())
+    print("Stack:", x, ", Size:", x.size())
 
     print("Check if array is empty.")
     print(x.is_empty())
-    print("Stack:", x.list(), ", Size:", x.size())
+    print("Stack:", x, ", Size:", x.size())
 
     print("Show the top item in the stack.")
     print(x.top())
-    print("Stack:", x.list(), ", Size:", x.size())
+    print("Stack:", x, ", Size:", x.size())
 
     print("Pop items from stack.")
     print(x.pop())
     print(x.pop())
     print(x.pop())
-    print("Stack:", x.list(), ", Size:", x.size())
+    print("Stack:", x, ", Size:", x.size())
 
     print("Show the top item in the stack.")
     print(x.top())
-    print("Stack:", x.list(), ", Size:", x.size())
+    print("Stack:", x, ", Size:", x.size())
 
 
 if __name__ == "__main__":
